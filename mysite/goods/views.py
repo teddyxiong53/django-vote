@@ -1,9 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.core.cache import cache
 from django.views.generic import View
 from .models import *
 
 # Create your views here.
+
+def redirect_index(request):
+    return redirect('/goods/index')
 
 class IndexView(View):
     def get(self, request):
