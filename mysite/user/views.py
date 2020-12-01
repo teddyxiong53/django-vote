@@ -14,7 +14,7 @@ class RegisterView(View):
 
     def post(self, request):
         username = request.POST.get('username')
-        password = request.POST.get('password')
+        password = request.POST.get('pwd')
         email = request.POST.get('email')
         allow = request.POST.get('allow')#是否同意协议
 
