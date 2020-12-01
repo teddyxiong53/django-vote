@@ -1,0 +1,79 @@
+
+{# 首页 注册 登录 #}
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+{% load static %}
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    {# 网页标题块 #}
+    <title>
+        {% block title %}
+        {% endblock title %}
+    </title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    {% block topfiles %}
+    {% endblock topfiles %}
+</head>
+
+<body>
+{% block header_con %}
+    <div class="header_con">
+        <div class="header">
+            <div class="welcome fl">我的网站</div>
+            <div class="fr">
+                {% if user.is_authenticated %}
+                <div class="login_btn fl">
+                    欢迎您：{{ user.username }} | <a href="{% url 'user:logout' %}">退出</a>
+                </div>
+                {% else %}
+                <div class="login_btn fl">
+                    <a href="{% url 'user:login' %}">
+                        登录
+                    </a>
+                    |
+                    <a href="{% url 'user:register' %}">
+                        注册
+                    </a>
+                </div>
+                {% endif %}
+                <div class="user_link fl">
+                    |
+                    <a href="{% url 'user:user' %}">用户中心</a>
+                    |
+                    <a href="{% url 'user:cart' %}">购物车</a>
+                    |
+                    <a href="{% url 'user:order' 1 %}">我的订单</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock header_con%}
+
+{% block search_bar %}
+<div>
+    搜索栏占位
+</div>
+{% endblock search_bar %}
+{% block body %}
+{% endblock body %}
+
+<div class="footer">
+    <div class="footer_link">
+        <a href="#">关于我们</a>
+        |
+        <a href="#">联系我们</a>
+        |
+        <a href="#">招聘人才</a>
+        |
+        <a href="#">友情链接</a>
+    </div>
+</div>
+
+{% block bottom %}
+{% endblock bottom %}
+
+{% block bottomfiles %}
+{% endblock bottomfiles %}
+</body>
+
+</html>
